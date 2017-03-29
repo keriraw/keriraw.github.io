@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../styles.css">
+		<title>Magic Square</title>
+	</head>
+	<body>
+		<div>
+			<a href="../index.html">Back</a>
+		</div>
+		<div id="content">
+			<table align='center'>
+				<tbody style='color:#FFF;'>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td id='d1'>-</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="number" id='n0' onchange="update()" value='1'>
+						</td>
+						<td>
+							<input type="number" id='n1' onchange="update()" value='2'>
+						</td>
+						<td>
+							<input type="number" id='n2' onchange="update()" value='3'>
+						</td>
+						<td id='f1'>-</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="number" id='n3' onchange="update()" value='4'>
+						</td>
+						<td>
+							<input type="number" id='n4' onchange="update()" value='5'>
+						</td>
+						<td>
+							<input type="number" id='n5' onchange="update()" value='6'>
+						</td>
+						<td id='f2'>-</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="number" id='n6' onchange="update()" value='7'>
+						</td>
+						<td>
+							<input type="number" id='n7' onchange="update()" value='8'>
+						</td>
+						<td>
+							<input type="number" id='n8' onchange="update()" value='9'>
+						</td>
+						<td id='f3'>-</td>
+					</tr>
+					<tr>
+						<td id='c1'>-</td>
+						<td id='c2'>-</td>
+						<td id='c3'>-</td>
+						<td id='d2'>-</td>
+					</tr>
+				</tobdy>
+			</table>
+		</div>
+		<div>
+			<p id="info" style='color:#FFF;text-align: center;'></p>
+		</div>
+	</body>
+	<script src="./square.js"></script>
+</html>

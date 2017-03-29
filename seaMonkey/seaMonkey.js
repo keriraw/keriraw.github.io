@@ -27,7 +27,7 @@ var eleWater = document.getElementById('waterCanvas')
 
 (function initializer ()
 {
- 	fillWater();
+	fillWater();
 	for (var i = configs.startingFish - 1; i >= 0; i--) {
 		monkeys.push(new Monkey());
 	}
@@ -167,10 +167,10 @@ function Monkey ()
 
 function fillWater ()
 {
- 	conWater.fillStyle = palette.poison;
- 	conWater.fillRect(0,0,eleWater.width,eleWater.height);
- 	conWater.fillStyle = palette.water;
- 	conWater.fillRect(configs.poisonSize,configs.poisonSize,eleWater.width-configs.poisonSize*2,eleWater.height-configs.poisonSize*2);
+	conWater.fillStyle = palette.poison;
+	conWater.fillRect(0,0,eleWater.width,eleWater.height);
+	conWater.fillStyle = palette.water;
+	conWater.fillRect(configs.poisonSize,configs.poisonSize,eleWater.width-configs.poisonSize*2,eleWater.height-configs.poisonSize*2);
 };
 
 function acceptancePercent (accept)

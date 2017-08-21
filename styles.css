@@ -17,3 +17,20 @@ a:hover {
 	color: #01D7EB;
 	text-decoration: underline;
 }
+
+.text {
+	color: #FFF;
+	text-decoration: none;
+	font-family: monospace;
+}
+
+.code {
+	color: #000;
+	background-color: #f1f1f1;
+	padding: 0.01em 16px;
+	margin: 20px 0;
+}
+
+.tab {
+	padding-left: 1em;
+}

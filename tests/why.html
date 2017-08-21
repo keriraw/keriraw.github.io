@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../styles.css">
+		<title>Why?</title>
+	</head>
+	<body>
+		<div class="text">
+			<p>Let's explain this code... and solve a small problem</p>
+			<div class="code">
+				<p>function retDado (min, max){</p>
+				<p class="tab">return Math.floor( Math.random() * ( max-min + 1) + min );</p>
+				<p>}</p>
+			</div>
+			<p>If we test this code on the console, we can see that the function will return a number between the min and max (including them)</p>
+			<p>Let's understand it by parts:</p>
+			<div class="code">
+				<p>Math.floor( number );</p>
+			</div>
+			<p>This will return the floor of the number given, the number rounded down.</p>
+			<p>For example: the floor of 1, is 1, while the floor of 1.5 is 1 and the floor of 1.99 is still 1</p>
+			<div class="code">
+				<p>Math.random();</p>
+			</div>
+			<p>This will return a number between 0 (inclusive) and 1 (exclusive)</p>
+			<p>Here is where our problem starts... let's begin with the easier implementation and escalate to the proposed solution</p>
+			<p>We want to generate a number between 1 and 10 (here you can test our proposed solution on the console to see it works)</p>
+			<p>Let's begin understand what we need to do mathematically:</p>
+			<p>We have a function (Math.Random()) that generates a random number for us between 0 and 1 and we need to translate that to a number between 1 and 10</p>
+			<div class="code">
+				<p>&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;10</p>
+				<p> 0.099 - 0.199 - 0.299 - 0.399 - 0.499 - 0.599 - 0.699 - 0.799 - 0.899 - 0.999 </p>
+			</div>
+			<p>We can asume it looks a bit like that... as we can see, all the numbers are aproximatelly 10 times smaller that the number we want to get, so we can do this:</p>
+			<div class="code">
+				<p>Math.random() * 10;</p>
+			</div>
+			<p>If we run this enough times on the console, we can see the results range from: 0 to 9.999999999999998 (aprox)</p>
+			<p>We are close, but not there yet, 0 is exactly 1 smaller than 1 obviously, but 9.999999999999998 is only 0.000000000000002 smaller than 10</p>
+			<p>Here is where we start using the floor, since it will remove all our pesky decimals</p>
+			<div class="code">
+				<p>Math.floor(Math.random() * 10);</p>
+			</div>
+			<p>Now we are so close, every number generated falls between 0 and 9, we just have to add ONE (1) and we are there</p>
+			<div class="code">
+				<p>Math.floor(Math.random() * 10 + 1);</p>
+			</div>
+
+			<p>Now we are finally there, we are generating numbers between 1 and 10, we solved the easier problem</p>
+			<p>Let's understand what we just did:</p>
+			<p>1. We generated a number between 0 and 1 (exclusive)</p>
+			<p class="tab">Math.random();</p>
+			<p>2. We multiplied it by the amount of results we actually want (10)</p>
+			<p class="tab">Math.random() * 10;</p>
+			<p>3. We floored it to get a number between 0 and 9 (still 10 numbers)</p>
+			<p class="tab">Math.floor(Math.random() * 10);</p>
+			<p>4. We moved our number serie to match our minimum (1) and our maximum (10) by adding 1</p>
+			<p class="tab">Math.floor(Math.random() * 10 + 1);</p>
+
+			<p>We can translate it in pseudocode like:</p>
+			<div class="code">
+				<p>floor(generate_random_number * amount_of_numbers_we_need + where_to_start_counting);</p>
+			</div>
+
+			<p>Now we can easily generate a number between 5 and 14:</p>
+			<p>How many numbers we need? 10 (yes, we are including both 5 and 14 [5,6,7,8,9,10,11,12,13,14])</p>
+			<p>Where do we start counting? 5</p>
+			<div class="code">
+				<p>Math.floor(Math.random() * 10 + 5);</p>
+			</div>
+
+			<p>But this is too complex, we don't want to input the amount of numbers we need to generate and the minimum number</p>
+			<p>I want to generate a number between 326 and 8713, calculating how many numbers I need is too hard, and the computer can do it faster</p>
+			<p>I would use a calculator (another computer) to find out the answer anyway</p>
+
+			<p>Let's go back to a simplier aproach again, I want to generate a number between 5 and 10</p>
+			<p>We know we need 6 [5,6,7,8,9,10] numbers and we start in 5</p>
+
+			<p>So what we do is the same procedure:</p>
+			<p>1. We generated a number between 0 and 1 (exclusive)</p>
+			<p class="tab">Math.random();</p>
+			<p>This is still the same</p>
+			<p>2. We multiplied it by the amount of results we actually want (6)</p>
+			<p class="tab">Math.random() * 6;</p>
+			<p>Wait, wait, wait, how did you arrive to 6 if you only have minimum and maximum?</p>
+			<p>We know that our maximum is 10 and our minimum is 5 and we already counted that we need 6 numbers [5,6,7,8,9,10]</p>
+			<p>We know if we substract our minimum from our maximum (10-5) we obtain 5, because substraction will remove [1,2,3,4,5](5 elements) from [1,2,3,4,5,6,7,8,9,10](10 elements), so we need to add the missing element again (+1)</p>
+			<p>That's how we get to 6 (max-min + 1) and we solved the parenthesis in the starting excersise</p>
+			<p>3. We floored it to get a number between 0 and 6 (still 6 numbers)</p>
+			<p>Again the same than we previosly did</p>
+			<p class="tab">Math.floor(Math.random() * 6);</p>
+			<p>4. We moved our number serie to match our minimum (5) and our maximum (10) by adding 5</p>
+			<p>And this is why we add the minimum at the end, we are just moving our numerical serie (our 6 numbers) to where we need them</p>
+			<div class="code">
+				<p>function retDado (min, max){</p>
+				<p class="tab">return Math.floor( Math.random() * ( max-min + 1) + min );</p>
+				<p>}</p>
+			</div>
+		</div>
+	</body>
+</html>

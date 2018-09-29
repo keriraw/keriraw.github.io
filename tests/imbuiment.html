@@ -1,0 +1,341 @@
+<head>
+	<title>Imbuiment cost calculator</title>
+</head>
+
+<body>
+	<div class='container'>
+		<div class='title'>
+			<h1 style='text-align: center;'>IMBUIMENT COST CALCULATOR</h1>
+		</div>
+	</div>
+
+	<div class='container'>
+		<div class='row'>
+			<div class='what col-6'>
+				<h2>WHAT</h2>
+				<small>If imbuiment or rank is not picked, the line will be ignored</small>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Imbuiment</th>
+							<th scope="col">Level</th>
+							<th scope="col">100%</th>
+						</tr>
+					</thead>
+					<tbody class='imbused'>
+
+					</tbody>
+				</table>
+				<button type='button' class='btn btn-primary addbtn'>Add a new imbuiment</button>
+			</div>
+
+			<div class='prices col-6'>
+				<h2>PRICES</h2>
+				<small>Prices will be saved when they are used</small>
+				<small>If not provided, 0 will be assumed</small>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Item</th>
+							<th scope="col">Unit price</th>
+						</tr>
+					</thead>
+					<tbody class='prices'>
+						<tr>
+							<td>
+								Rope belts
+							</td>
+							<td>
+								<input id="ropebelt" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Silencer Claws
+							</td>
+							<td>
+								<input id="sclaws" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Some Grimeleech Wings
+							</td>
+							<td>
+								<input id="sgwings" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Protective Charms
+							</td>
+							<td>
+								<input id="pcharms" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Sabreteeth
+							</td>
+							<td>
+								<input id="sabre" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Vexclaw Talons
+							</td>
+							<td>
+								<input id="vtalons" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Vampire Teeth
+							</td>
+							<td>
+								<input id="vampiret" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Bloody Pincers
+							</td>
+							<td>
+								<input id="bpincers" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Piece of Dead Brain
+							</td>
+							<td>
+								<input id="dedbrain" type="number">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class='container'>
+		<div>
+			<h2>RESULT</h2>
+			<button type='button' class='btn btn-primary calculate'>Calculate</button>
+		</div>
+		<div id="result" class="result">
+
+		</div>
+	</div>
+</body>
+
+<footer>
+	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+
+	<script type='text/javascript'>
+		let addbtn = document.getElementsByClassName('addbtn')[0];
+		addbtn.addEventListener('click', newImbuiment);
+		let calculate = document.getElementsByClassName('calculate')[0];
+		calculate.addEventListener('click', doyourmagic);
+
+		let imbuiments = `<option value="">Imbuiment</option>
+							<option value="mana">Mana leech</option>
+							<option value="life">Life leech</option>
+							<option value="crit">Critical</option>`;
+
+		let level = `<option value="">Rank</option>
+							<option value="1">Basic</option>
+							<option value="2">Intricate</option>
+							<option value="3">Powerful</option>`;
+
+		function newImbuiment ()
+		{
+			let imbused = document.getElementsByClassName('imbused')[0];
+			let l = imbused.getElementsByTagName("tr").length;
+
+			imbused.innerHTML += `
+			<tr id='${l}'>
+				<td>
+					<select id="imbuiment" class="imbuiment">
+						${imbuiments}
+					</select>
+				</td>
+				<td>
+					<select id="level" class="level">
+						${level}
+					</select>
+				</td>
+				<td>
+					<input id="cien" type="checkbox" class="cien">
+				</td>
+			</tr>`;
+		}
+
+		function doyourmagic ()
+		{
+			savevalues();
+			// mana:	25 Rope Belts, 25 Silencer Claws, 5 Some Grimeleech Wings
+			// life:	25 Vampire Teeth, 15 Bloody Pincers, 5 Piece of Dead Brain
+			// crit: 	20 Protective Charms, 25 Sabreteeth, 5 Vexclaw Talons
+
+			// basic 5/10
+			// intricate 25/30
+			// powerful 100/50
+
+			let totalPrice = 0;
+			let imbused = document.getElementsByClassName('imbused')[0];
+			let l = Array.from(imbused.getElementsByTagName("tr"));
+
+			if (l.length > 0)
+			{
+				l.forEach(function (el)
+				{
+					let partialPrice = 0;
+
+					let type = el.getElementsByClassName('imbuiment')[0].value;
+					let rank = el.getElementsByClassName('level')[0].value;
+					let cien = el.getElementsByClassName('cien')[0].checked;
+
+					switch (type) {
+						case 'mana':
+							switch (rank) {
+								case '1':
+									partialPrice = 5000;
+									cien ? partialPrice = partialPrice + 10000 : partialPrice;
+
+									partialPrice += 25 * document.getElementById('ropebelt').value;
+
+									break;
+								case '2':
+									partialPrice = 25000;
+									cien ? partialPrice = partialPrice + 30000 : partialPrice;
+
+									partialPrice += 25 * document.getElementById('ropebelt').value;
+									partialPrice += 25 * document.getElementById('sclaws').value;
+
+									break;
+								case '3':
+									partialPrice = 100000;
+									cien ? partialPrice = partialPrice + 50000 : partialPrice;
+
+									partialPrice += 25 * document.getElementById('ropebelt').value;
+									partialPrice += 25 * document.getElementById('sclaws').value;
+									partialPrice += 5 * document.getElementById('sgwings').value;
+
+									break;
+								default:
+									console.log('Ignored undefined rank');
+							}
+							break;
+						case 'life':
+							switch (rank) {
+								case '1':
+									partialPrice = 5000;
+									cien ? partialPrice = partialPrice + 10000 : partialPrice;
+
+									partialPrice += 25 * document.getElementById('vampiret').value;
+									break;
+								case '2':
+									partialPrice = 25000;
+									cien ? partialPrice = partialPrice + 30000 : partialPrice;
+
+									partialPrice += 25 * document.getElementById('vampiret').value;
+									partialPrice += 15 * document.getElementById('bpincers').value;
+
+									break;
+								case '3':
+									partialPrice = 100000;
+									cien ? partialPrice = partialPrice + 50000 : partialPrice;
+
+									partialPrice += 25 * document.getElementById('vampiret').value;
+									partialPrice += 15 * document.getElementById('bpincers').value;
+									partialPrice += 5 * document.getElementById('dedbrain').value;
+
+									break;
+								default:
+									console.log('Ignored undefined rank');
+							}
+							break;
+						case 'crit':
+							switch (rank) {
+								case '1':
+									partialPrice = 5000;
+									cien ? partialPrice = partialPrice + 10000 : partialPrice;
+
+									partialPrice += 20 * document.getElementById('pcharms').value;
+
+									break;
+								case '2':
+									partialPrice = 25000;
+									cien ? partialPrice = partialPrice + 30000 : partialPrice;
+
+									partialPrice += 20 * document.getElementById('pcharms').value;
+									partialPrice += 25 * document.getElementById('sabre').value;
+
+									break;
+								case '3':
+									partialPrice = 100000;
+									cien ? partialPrice = partialPrice + 50000 : partialPrice;
+
+									partialPrice += 20 * document.getElementById('pcharms').value;
+									partialPrice += 25 * document.getElementById('sabre').value;
+									partialPrice += 15 * document.getElementById('vtalons').value;
+
+									break;
+								default:
+									console.log('Ignored undefined rank');
+							}
+							break;
+						default:
+							console.log('Ignored undefined imbuiment');
+					}
+
+					totalPrice += partialPrice;
+				});
+			}
+
+			let result = document.getElementsByClassName('result')[0];
+			if (totalPrice > 0)
+			{
+				result.innerHTML = `<p>The total cost is: ${totalPrice}</p>
+				<p>The cost per hour is: ${totalPrice / 20}</p>
+				<p>The cost per minute is: ${totalPrice / 60}</p>`;
+			}
+			else
+			{
+				result.innerHTML = `<p>Looks like you miss some imbuiments, go and get some!</p>`;
+			}
+		}
+
+		function savevalues ()
+		{
+			localStorage.setItem('ropebelt', document.getElementById('ropebelt').value);
+			localStorage.setItem('sclaws', document.getElementById('sclaws').value);
+			localStorage.setItem('sgwings', document.getElementById('sgwings').value);
+
+			localStorage.setItem('pcharms', document.getElementById('pcharms').value);
+			localStorage.setItem('sabre', document.getElementById('sabre').value);
+			localStorage.setItem('vtalons', document.getElementById('vtalons').value);
+
+			localStorage.setItem('vampiret', document.getElementById('vampiret').value);
+			localStorage.setItem('bpincers', document.getElementById('bpincers').value);
+			localStorage.setItem('dedbrain', document.getElementById('dedbrain').value);
+		}
+
+		(function populatevalues ()
+		{
+			document.getElementById('ropebelt').value = localStorage.getItem('ropebelt');
+			document.getElementById('sclaws').value = localStorage.getItem('sclaws');
+			document.getElementById('sgwings').value = localStorage.getItem('sgwings');
+
+			document.getElementById('pcharms').value = localStorage.getItem('pcharms');
+			document.getElementById('sabre').value = localStorage.getItem('sabre');
+			document.getElementById('vtalons').value = localStorage.getItem('vtalons');
+
+			document.getElementById('vampiret').value = localStorage.getItem('vampiret');
+			document.getElementById('bpincers').value = localStorage.getItem('bpincers');
+			document.getElementById('dedbrain').value = localStorage.getItem('dedbrain');
+		})();
+	</script>
+</footer>

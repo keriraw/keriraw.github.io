@@ -1,0 +1,350 @@
+<head>
+	<title>Gold token vs Items</title>
+</head>
+
+<body>
+	<div class='container'>
+		<div class='title'>
+			<h1 style='text-align: center;'>GOLD TOKEN VS ITEMS</h1>
+		</div>
+	</div>
+
+	<div class='container'>
+		<div class='row'>
+			<div class='what col-6'>
+				<div>
+					<h2>RESULT</h2>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Imbuiment</th>
+								<th scope="col">What to buy?</th>
+							</tr>
+						</thead>
+						<tbody class='result'>
+							<tr id="basicmana">
+								<td>
+									Basic Mana Leech <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/9/95/Basic_Void.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="intricatemana">
+								<td>
+									Intricate Mana Leech <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/9/95/Basic_Void.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="powerfulmana">
+								<td>
+									Powerful Mana Leech <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/9/95/Basic_Void.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="basiclife">
+								<td>
+									Basic Life Leech <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/5/53/Basic_Vampirism.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="intricatelife">
+								<td>
+									Intricate Life Leech <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/5/53/Basic_Vampirism.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr  id="powerfullife">
+								<td>
+									Powerful Life Leech <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/5/53/Basic_Vampirism.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="basiccrit">
+								<td>
+									Basic Critical <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/f/f0/Basic_Strike.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="intricatecrit">
+								<td>
+									Intricate Critical <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/f/f0/Basic_Strike.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr id="powerfulcrit">
+								<td>
+									Powerful Critical <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/f/f0/Basic_Strike.png/revision/latest?cb=1&path-prefix=en">
+								</td>
+								<td>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<button type='button' class='btn btn-primary calculate'>Calculate</button>
+				</div>
+			</div>
+
+			<div class='prices col-6'>
+				<h2>PRICES</h2>
+				<small>Prices will be saved when they are used</small>
+				<small>If not provided, 0 will be assumed</small>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Item</th>
+							<th scope="col">Unit price</th>
+						</tr>
+					</thead>
+					<tbody class='prices'>
+						<tr>
+							<td>
+								Gold Token <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/0/0b/Gold_Token.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="goldtoken" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Rope belts <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/6/69/Rope_Belt.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="ropebelt" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Silencer Claws <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/d/d6/Silencer_Claws.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="sclaws" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Some Grimeleech Wings <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/8/8c/Some_Grimeleech_Wings.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="sgwings" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Protective Charms <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/f/fb/Protective_Charm.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="pcharms" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Sabreteeth <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/d/dd/Sabretooth.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="sabre" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Vexclaw Talons <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/f/f7/Vexclaw_Talon.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="vtalons" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Vampire Teeth <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/f/f1/Vampire_Teeth.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="vampiret" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Bloody Pincers <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/1/1d/Bloody_Pincers.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="bpincers" type="number">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Piece of Dead Brain <img width="32" height="32" src="https://vignette.wikia.nocookie.net/tibia/images/8/85/Piece_of_Dead_Brain.gif/revision/latest?cb=1&path-prefix=en">
+							</td>
+							<td>
+								<input id="dedbrain" type="number">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+<footer>
+	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+
+	<script type='text/javascript'>
+		let calculate = document.getElementsByClassName('calculate')[0];
+		calculate.addEventListener('click', doyourmagic);
+
+		function doyourmagic ()
+		{
+			savevalues();
+			// mana:	25 Rope Belts, 25 Silencer Claws, 5 Some Grimeleech Wings
+			// life:	25 Vampire Teeth, 15 Bloody Pincers, 5 Piece of Dead Brain
+			// crit: 	20 Protective Charms, 25 Sabreteeth, 5 Vexclaw Talons
+
+			// basic 5/10
+			// intricate 25/30
+			// powerful 100/50
+
+			let result = document.getElementsByClassName('result')[0];
+			let l = Array.from(result.getElementsByTagName("tr"));
+
+			if (l.length > 0)
+			{
+				l.forEach(function (el)
+				{
+					let partialPrice = 0;
+					let tokenPrice = 0;
+
+					switch (el.getAttribute('id')) {
+						case 'basicmana':
+
+						partialPrice += 25 * document.getElementById('ropebelt').value;
+						tokenPrice = 2 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+
+						break;
+						case 'intricatemana':
+
+						partialPrice += 25 * document.getElementById('ropebelt').value;
+						partialPrice += 25 * document.getElementById('sclaws').value;
+						tokenPrice = 4 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'powerfulmana':
+
+						partialPrice += 25 * document.getElementById('ropebelt').value;
+						partialPrice += 25 * document.getElementById('sclaws').value;
+						partialPrice += 5 * document.getElementById('sgwings').value;
+						tokenPrice = 6 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'basiclife':
+
+						partialPrice += 25 * document.getElementById('vampiret').value;
+						tokenPrice = 2 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'intricatelife':
+
+						partialPrice += 25 * document.getElementById('vampiret').value;
+						partialPrice += 15 * document.getElementById('bpincers').value;
+						tokenPrice = 4 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'powerfullife':
+
+						partialPrice += 25 * document.getElementById('vampiret').value;
+						partialPrice += 15 * document.getElementById('bpincers').value;
+						partialPrice += 5 * document.getElementById('dedbrain').value;
+						tokenPrice = 6 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'basiccrit':
+
+						partialPrice += 20 * document.getElementById('pcharms').value;
+						tokenPrice = 2 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'intricatecrit':
+
+						partialPrice += 20 * document.getElementById('pcharms').value;
+						partialPrice += 25 * document.getElementById('sabre').value;
+						tokenPrice = 4 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						case 'powerfulcrit':
+
+						partialPrice += 20 * document.getElementById('pcharms').value;
+						partialPrice += 25 * document.getElementById('sabre').value;
+						partialPrice += 15 * document.getElementById('vtalons').value;
+						tokenPrice = 6 * document.getElementById('goldtoken').value;
+
+						print(partialPrice, tokenPrice, el);
+						break;
+						default:
+							console.log('What?');
+
+					}
+
+				});
+			}
+		}
+
+		function print (partialPrice, tokenPrice, el)
+		{
+			if (partialPrice > tokenPrice)
+			{
+				el.lastElementChild.innerHTML = `<span class="badge badge-warning">TOKEN</span>`;
+			}
+			else
+			{
+				el.lastElementChild.innerHTML = `<span class="badge badge-primary">ITEMS</span>`;
+			}
+		}
+
+		function savevalues ()
+		{
+			localStorage.setItem('goldtoken', document.getElementById('goldtoken').value);
+
+			localStorage.setItem('ropebelt', document.getElementById('ropebelt').value);
+			localStorage.setItem('sclaws', document.getElementById('sclaws').value);
+			localStorage.setItem('sgwings', document.getElementById('sgwings').value);
+
+			localStorage.setItem('pcharms', document.getElementById('pcharms').value);
+			localStorage.setItem('sabre', document.getElementById('sabre').value);
+			localStorage.setItem('vtalons', document.getElementById('vtalons').value);
+
+			localStorage.setItem('vampiret', document.getElementById('vampiret').value);
+			localStorage.setItem('bpincers', document.getElementById('bpincers').value);
+			localStorage.setItem('dedbrain', document.getElementById('dedbrain').value);
+		}
+
+		(function populatevalues ()
+		{
+			document.getElementById('goldtoken').value = localStorage.getItem('goldtoken');
+
+			document.getElementById('ropebelt').value = localStorage.getItem('ropebelt');
+			document.getElementById('sclaws').value = localStorage.getItem('sclaws');
+			document.getElementById('sgwings').value = localStorage.getItem('sgwings');
+
+			document.getElementById('pcharms').value = localStorage.getItem('pcharms');
+			document.getElementById('sabre').value = localStorage.getItem('sabre');
+			document.getElementById('vtalons').value = localStorage.getItem('vtalons');
+
+			document.getElementById('vampiret').value = localStorage.getItem('vampiret');
+			document.getElementById('bpincers').value = localStorage.getItem('bpincers');
+			document.getElementById('dedbrain').value = localStorage.getItem('dedbrain');
+		})();
+	</script>
+</footer>

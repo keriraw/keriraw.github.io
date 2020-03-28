@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TAQUITO CLICKER</title>
+</head>
+<body>
+	<p>Taquitos collected: <span id="my-taquitos"></span></p>
+	<img src="./taquito.jpg" id="the-taquito">
+</body>
+</html>
+
+<script type="text/javascript">
+	var myTaquitos;
+	var taquiCounter;
+
+	function initGame() {
+		loadMyTaquitos();
+		loadElements();
+		updateMyTaquitos();
+		theTaquito.onclick = giveMeOneMoreTaco;
+	}
+
+	function loadElements () {
+		taquiCounter = document.getElementById("my-taquitos");
+		theTaquito = document.getElementById("the-taquito");
+	}
+
+	function loadMyTaquitos() {
+		myTaquitos = localStorage.getItem('myTaquitos');
+		if (!myTaquitos) {
+			myTaquitos = 0;
+		}
+	}
+
+	function saveMyTaquitos(currentTaquitos) {
+		localStorage.setItem('myTaquitos', currentTaquitos);
+	}
+
+	function updateMyTaquitos() {
+		if (taquiCounter) {
+			taquiCounter.innerHTML = myTaquitos;
+		} else {
+			loadElements();
+			updateMyTaquitos();
+		}
+	}
+
+	function giveMeOneMoreTaco() {
+		myTaquitos++;
+		saveMyTaquitos(myTaquitos);
+		updateMyTaquitos();
+	}
+
+	window.onload = initGame;
+</script>

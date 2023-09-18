@@ -213,104 +213,101 @@
 
 			if (l.length > 0)
 			{
+				let twoTokensPrice = 2 * document.getElementById('goldtoken').value;
 				l.forEach(function (el)
 				{
 					let partialPrice = 0;
-					let tokenPrice = 0;
+					let result = [];
+					let item1 = 0;
+					let item2 = 0;
+					let item3 = 0;	
 
 					switch (el.getAttribute('id')) {
 						case 'basicmana':
-
-						partialPrice += 25 * document.getElementById('ropebelt').value;
-						tokenPrice = 2 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
-
+							item1 = 25 * document.getElementById('ropebelt').value;
+							item1 < twoTokensPrice ? result.push("items") : result.push("token"); 
+							print(result, el);
 						break;
 						case 'intricatemana':
-
-						partialPrice += 25 * document.getElementById('ropebelt').value;
-						partialPrice += 25 * document.getElementById('sclaws').value;
-						tokenPrice = 4 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 25 * document.getElementById('ropebelt').value;
+							item2 = 25 * document.getElementById('sclaws').value;
+							item1 + item2 < 2 * twoTokensPrice ? result.push("items") : result.push("token")
+							item2 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						case 'powerfulmana':
-
-						partialPrice += 25 * document.getElementById('ropebelt').value;
-						partialPrice += 25 * document.getElementById('sclaws').value;
-						partialPrice += 5 * document.getElementById('sgwings').value;
-						tokenPrice = 6 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 25 * document.getElementById('ropebelt').value;
+							item2 = 25 * document.getElementById('sclaws').value;
+							item3 = 5 * document.getElementById('sgwings').value;
+							item1 + item2 + item3 < 3 * twoTokensPrice ? result.push("items") : result.push("token"); 
+							item2 + item3 < 2 * twoTokensPrice ? result.push("items") : result.push("token")
+							item3 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						case 'basiclife':
-
-						partialPrice += 25 * document.getElementById('vampiret').value;
-						tokenPrice = 2 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 25 * document.getElementById('vampiret').value;
+							item1 < twoTokensPrice ? result.push("items") : result.push("token"); 
+							print(result, el);
 						break;
 						case 'intricatelife':
-
-						partialPrice += 25 * document.getElementById('vampiret').value;
-						partialPrice += 15 * document.getElementById('bpincers').value;
-						tokenPrice = 4 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 25 * document.getElementById('vampiret').value;
+							item2 = 15 * document.getElementById('bpincers').value;
+							item1 + item2 < 2 * twoTokensPrice ? result.push("items") : result.push("token")
+							item2 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						case 'powerfullife':
-
-						partialPrice += 25 * document.getElementById('vampiret').value;
-						partialPrice += 15 * document.getElementById('bpincers').value;
-						partialPrice += 5 * document.getElementById('dedbrain').value;
-						tokenPrice = 6 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 25 * document.getElementById('vampiret').value;
+							item2 = 15 * document.getElementById('bpincers').value;
+							item3 = 5 * document.getElementById('dedbrain').value;
+							item1 + item2 + item3 < 3 * twoTokensPrice ? result.push("items") : result.push("token"); 
+							item2 + item3 < 2 * twoTokensPrice ? result.push("items") : result.push("token")
+							item3 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						case 'basiccrit':
-
-						partialPrice += 20 * document.getElementById('pcharms').value;
-						tokenPrice = 2 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 20 * document.getElementById('pcharms').value;
+							item1 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						case 'intricatecrit':
-
-						partialPrice += 20 * document.getElementById('pcharms').value;
-						partialPrice += 25 * document.getElementById('sabre').value;
-						tokenPrice = 4 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 20 * document.getElementById('pcharms').value;
+							item2 = 25 * document.getElementById('sabre').value;
+							item1 + item2 < 2 * twoTokensPrice ? result.push("items") : result.push("token")
+							item2 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						case 'powerfulcrit':
-
-						partialPrice += 20 * document.getElementById('pcharms').value;
-						partialPrice += 25 * document.getElementById('sabre').value;
-						partialPrice += 15 * document.getElementById('vtalons').value;
-						tokenPrice = 6 * document.getElementById('goldtoken').value;
-
-						print(partialPrice, tokenPrice, el);
+							item1 = 20 * document.getElementById('pcharms').value;
+							item2 = 25 * document.getElementById('sabre').value;
+							item3 = 15 * document.getElementById('vtalons').value;
+							item1 + item2 + item3 < 3 * twoTokensPrice ? result.push("items") : result.push("token"); 
+							item2 + item3 < 2 * twoTokensPrice ? result.push("items") : result.push("token")
+							item3 < twoTokensPrice ? result.push("items") : result.push("token");
+							print(result, el);
 						break;
 						default:
 							console.log('What?');
-
 					}
 
 				});
 			}
 		}
 
-		function print (partialPrice, tokenPrice, el)
+		function print (results, el)
 		{
-			if (partialPrice > tokenPrice)
-			{
-				el.lastElementChild.innerHTML = `<span class="badge badge-warning">TOKEN</span>`;
-			}
-			else
-			{
-				el.lastElementChild.innerHTML = `<span class="badge badge-primary">ITEMS</span>`;
-			}
+			let html = "";
+			results.forEach((result) => {
+				if (result === "token")
+				{
+					html += `<span class="badge badge-warning">TOKEN</span>`;
+				}
+				else if (result === "items")
+				{
+					html += `<span class="badge badge-primary">ITEMS</span>`;
+				}
+			});
+			el.lastElementChild.innerHTML = html;
 		}
 
 		function savevalues ()
